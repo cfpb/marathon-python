@@ -70,6 +70,7 @@ class MarathonApp(MarathonResource):
     :param int task_kill_grace_period_seconds: Configures the termination signal escalation behavior of executors when stopping tasks.
     :param list[dict] unreachable_strategy: Handling for unreachable instances.
     :param str kill_selection: Defines which instance should be killed first in case of e.g. rescaling.
+    :param int revive_offers_repetitions: The number of times to repeat the reviveOffers call
     """
 
     UPDATE_OK_ATTRIBUTES = [
@@ -97,7 +98,8 @@ class MarathonApp(MarathonResource):
                  tasks_healthy=None, task_kill_grace_period_seconds=None, tasks_unhealthy=None, upgrade_strategy=None,
                  unreachable_strategy=None, uris=None, user=None, version=None, version_info=None,
                  ip_address=None, fetch=None, task_stats=None, readiness_checks=None,
-                 readiness_check_results=None, secrets=None, port_definitions=None, residency=None, gpus=None, networks=None):
+                 readiness_check_results=None, revive_offers_repetitions=None, secrets=None, port_definitions=None,
+                 residency=None, gpus=None, networks=None):
 
         # self.args = args or []
         self.accepted_resource_roles = accepted_resource_roles
@@ -156,6 +158,7 @@ class MarathonApp(MarathonResource):
         self.readiness_check_results = readiness_check_results or []
         self.residency = residency
         self.require_ports = require_ports
+        self.revive_offers_repetitions = revive_offers_repetitions
 
         self.secrets = secrets or {}
         for k, s in self.secrets.items():
