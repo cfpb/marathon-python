@@ -2,10 +2,6 @@
 import sys
 from setuptools import setup
 
-extra = {}
-if sys.version_info >= (3,):
-    extra['use_2to3'] = True
-
 setup(
     name='marathon',
     version='0.9.3',
@@ -24,12 +20,9 @@ setup(
         'Intended Audience :: System Administrators',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],
-    **extra
 )
